@@ -77,10 +77,20 @@ int do_puzzle_1(std::ifstream &file) {
 
 int do_puzzle_2(std::ifstream &file) {
     std::string line;
+    std::getline(file, line);
 
-    while (std::getline(file, line)) {
-        fmt::println("{}", line);
+    int floor = 0;
+    int position = 1;
+
+    for (auto &c: line) {
+        floor += (c == '(') ? 1 : -1;
+
+        if (floor == -1) {
+            break;
+        }
+
+        position++;
     }
 
-    return 0;
+    return position;
 }
