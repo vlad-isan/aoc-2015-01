@@ -70,12 +70,9 @@ int puzzle_2(const std::string &base_file_path) {
 
 int do_puzzle_1(std::ifstream &file) {
     std::string line;
+    std::getline(file, line);
 
-    while (std::getline(file, line)) {
-        fmt::println("{}", line);
-    }
-
-    return 0;
+    return std::count(line.begin(), line.end(), '(') - std::count(line.begin(), line.end(), ')');
 }
 
 int do_puzzle_2(std::ifstream &file) {
